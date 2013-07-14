@@ -6,15 +6,5 @@
                 location.reload(true);
             }
         };
-
-        var displayStatus = document.querySelector("#online-status");
-        if (displayStatus) {
-            // Using this, since navigator.onLine is very inconcistent and unreliable
-            appCache.onerror = function() {
-                displayStatus.className = "offline";
-                displayStatus.title = "Offline";
-            };
-            
-        }
     }
 })();

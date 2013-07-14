@@ -72,7 +72,7 @@
 		count_sec = time.active - (count_min * 60);
 
 		timecount.innerHTML = count_min + "min <br><span>" + count_sec + " sec</span>";
-		document.title = count_min + "min " + count_sec + " sec + || Work an Play";
+		document.title = count_min + "min " + count_sec + " sec || Work an Play";
 	}
 
 	button.play.addEventListener('click', function () {
