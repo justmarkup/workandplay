@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# Version 0.101
+
+index.html
+css/base.css
+css/headers.css
+css/buttons.css
+css/workandplay.css
+js/base.js
+js/range.js
+js/offline.js
+js/notify.js
+js/workandplay.js
+
+NETWORK:
+*
+
+FALLBACK:
+/ fallback.html

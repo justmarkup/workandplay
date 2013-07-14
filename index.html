@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+<head>
+    <meta charset="utf-8">
+    <title>Work an Play</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/headers.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/workandplay.css">
+</head>
+
+<body>
+
+    <section role="region">
+        <header>
+            <div id="online-status" title="Online"></div>
+            <menu type="toolbar">
+                <button id="install"><span class="icon icon-add">add</span></button>
+            </menu>
+            <h1>
+               Work and Play
+            </h1>
+        </header>
+    </section>
+
+
+    <div id="main" class="main">
+        <button id="play" >Start</button>
+        <button id="pause" >Pause</button>
+
+        <div class="slider">
+            <input id="slidework" type="range" min="5" max="120" step="1" value="30">
+            <h2>work vor <span id="valuework">30 min</span></h2>
+        </div>
+
+        <div class="slider">
+            <input id="slideplay" type="range" min="5" max="120" step="1" value="30">
+            <h2>play for <span id="valueplay">30 min</span></h2>
+        </div>
+
+        <div id="cycles">
+            <div class="cycle"></div>
+            <div class="cycle_one"></div>
+            <h1 class="timer work_active" id="timer">30 min</h1>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/range.js"></script>
+    <script type="text/javascript" src="js/offline.js"></script>
+    <script type="text/javascript" src="js/notify.js"></script>
+    <script type="text/javascript" src="js/workandplay.js"></script>
+
+</body>
+</html>
