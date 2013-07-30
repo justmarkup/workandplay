@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html manifest="manifest.appcache">
+<html>
+<!-- <html manifest="manifest.appcache"> -->
 <head>
     <meta charset="utf-8">
     <title>Work an Play</title>
@@ -28,6 +29,8 @@
         <button id="play" >Start</button>
         <button id="pause" >Pause</button>
 
+        <p class="current-status" id="currentstatus">Working...</p>
+
         <div class="slider">
             <input id="slidework" type="range" min="5" max="120" step="1" value="30">
             <h2>work vor <span id="valuework">30 min</span></h2>
@@ -43,6 +46,8 @@
             <div class="cycle_one"></div>
             <h1 class="timer work_active" id="timer">30 min</h1>
         </div>
+
+
 
     </div>
 
