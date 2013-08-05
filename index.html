@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
-<!-- <html manifest="manifest.appcache"> -->
+<html id="hide" manifest="manifest.appcache">
 <head>
     <meta charset="utf-8">
-    <title>Work an Play</title>
+    <title>Work n' Play</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/switches.css">
     <link rel="stylesheet" type="text/css" href="css/workandplay.css">
 </head>
 
-<body>
+<body id="show">
 
     <section role="region">
         <header>
@@ -19,21 +19,45 @@
                 <button id="install"><span class="icon icon-add">add</span></button>
             </menu>
             <h1>
-               Work and Play
+               Work n' Play
             </h1>
         </header>
     </section>
+
+    <h2 class="settings settings-show"><a href="#show">Settings</a></h2>
+    <h2 class="settings settings-hide"><a href="#hide">Close Settings</a></h2>
+    <nav id="nav">
+        
+        <ul>
+            <li>
+                Notifications
+                <label class="pack-switch">
+                    <input id="settingNotification" type="checkbox" checked>
+                    <span></span>
+                </label>
+            </li>
+            <li>
+                Sound
+                <label class="pack-switch">
+                    <input id="settingSound" type="checkbox" checked>
+                    <span></span>
+                </label>
+            </li>
+        </ul>
+    </nav>
 
 
     <div id="main" class="main">
         <button id="play" >Start</button>
         <button id="pause" >Pause</button>
 
-        <p class="current-status" id="currentstatus">Working...</p>
+        <p class="current-status" id="currentstatus"></p>
+
+        
 
         <div class="slider">
             <input id="slidework" type="range" min="5" max="120" step="1" value="30">
-            <h2>work vor <span id="valuework">30 min</span></h2>
+            <h2>work for <span id="valuework">30 min</span></h2>
         </div>
 
         <div class="slider">
@@ -47,7 +71,10 @@
             <h1 class="timer work_active" id="timer">30 min</h1>
         </div>
 
-
+    <audio id="audio">
+            <source src="sounds/waves.mp3#t=1,5"/>
+            <source src="sounds/waves.ogg#t=1,5"/>
+        </audio>
 
     </div>
 

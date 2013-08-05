@@ -20,19 +20,24 @@
 		currentstatus = $('currentstatus'),
 		time = {
 			active: 1800,
-			work: 1800,
-			play: 1800
+			work: 3000,
+			play: 900
 		},
 		active = (timecount.classList.contains('work_active')) || false,
 		notification = {
-			icon: 'workandplay.ico',
+			icon: 'worknplay.ico',
 			title: '',
 			body: '',
-			tag: 'workandplay'
+			tag: 'worknplay'
+		},
+		settings = {
+			notification: localStorage.getItem("notification") === "true" ? true : false,
+			sound: localStorage.getItem("sound") === "true" ? true : false
 		},
 		counter,
 		count_sec,
 		count_min;
+
 
 		time.active = active ? time.work : time.play;
 		slider.work.value = time.work / 60;
@@ -44,6 +49,9 @@
 		timecount.innerHTML = active ? value.work.innerHTML : value.play.innerHTML;
 
 
+		$('settingNotification').checked = settings.notification;
+		$('settingSound').checked = settings.sound;
+
 	function timer() {
 
 		if (timecount.classList.contains('work_active')) {
@@ -54,6 +62,7 @@
 			if (timecount.classList.contains('work_active')) {
 				timecount.classList.remove('work_active');		
 				timecount.classList.add('play_active');
+				document.documentElement.classList.add('isplaying');
 				time.active = time.play;
 				currentstatus.innerHTML = 'Playing...';
 				notification.title = 'Time to play';
@@ -61,17 +70,21 @@
 			} else {
 				timecount.classList.remove('play_active');
 				timecount.classList.add('work_active');
+				document.documentElement.classList.remove('isplaying');
 				time.active = time.work;
 				currentstatus.innerHTML = 'Working...';
 				notification.title = 'Back to work';
 				notification.body = 'Time to focus';
 			}
-			if (notify.isSupported && (notify.PERMISSION_GRANTED == notify.permissionLevel())) {
+			if (notify.isSupported && (notify.PERMISSION_GRANTED === notify.permissionLevel()) && settings.notification) {
 				notify.createNotification(notification.title, {
 					body: notification.body, 
 					icon: notification.icon,
 					tag: notification.tag
 				});
+			}
+			if (settings.sound) {
+				$('audio').play();
 			}
 			clearInterval(counter);
 			counter = setInterval(timer, 1000);
@@ -84,19 +97,19 @@
 
 		if (count_min > 0) {
 			timecount.innerHTML = count_min + "min <br><span>" + count_sec + " sec</span>";
-			document.title = count_min + "min " + count_sec + " sec || Work an Play";
+			document.title = count_min + "min " + count_sec + " sec || Work n' Play";
 		} else {
 			timecount.innerHTML = count_sec + " sec</span>";
-			document.title = count_sec + " sec || Work an Play";
+			document.title = count_sec + " sec || Work n' Play";
 		}
 
 		
 	}
 
-	button.play.addEventListener('click', function () {
+	button.play.addEventListener('click', function () {	
 		counter = setInterval(timer, 1000);
 		cycles.className = 'cycles_active';
-		if (notify.isSupported && (notify.PERMISSION_DEFAULT == notify.permissionLevel())) {
+		if (notify.isSupported && (notify.PERMISSION_DEFAULT === notify.permissionLevel())) {
 			notify.requestPermission();
 		}
 	});
@@ -107,7 +120,7 @@
 	});
 
 	slider.work.addEventListener('change', function () {
-		value.work.innerHTML = this.value + 'min';
+		value.work.innerHTML = this.value + ' min';
 		time.work = this.value * 60;
 		if (timecount.classList.contains('work_active')) {
 			time.active = this.value * 60;
@@ -115,11 +128,19 @@
 	});
 
 	slider.play.addEventListener('change', function () {
-		value.play.innerHTML = this.value + 'min';
+		value.play.innerHTML = this.value + ' min';
 		time.play = this.value * 60;
 		if (timecount.classList.contains('play_active')) {
 			time.active = this.value * 60;
 		}
+	});
+
+	$('settingNotification').addEventListener('change', function () {
+		localStorage.setItem("notification", $('settingNotification').checked);
+	});
+
+	$('settingSound').addEventListener('change', function () {
+		localStorage.setItem("sound", $('settingSound').checked);
 	});
 
 })(document);

@@ -1,3 +1,34 @@
+@media all and (min-width: 1200px) {
+    html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../images/background/work.jpg) no-repeat 0 0 #fff;
+    background-size: 100%;
+    }
+
+    html:after {
+        content: "";
+        background: rgba(0,0,0,.4);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+}
+
+
+
+body {
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.8);
+}
+
+audio {display: none;}
+
 #cycles {
     padding: 2em 0 0 0;
 }
@@ -37,7 +68,7 @@
 input {
     width: 100%;
     display: block;
-    margin:; 0 auto;
+    margin: 0 auto;
 }
 
 @media all and (min-width: 40em) {
@@ -60,6 +91,7 @@ h2 {
 .cycles_active .cycle_one {
     -moz-animation: spinoff 5s infinite linear;
     -webkit-animation: spinoff 5s infinite linear;
+    animation: spinoff 5s infinite linear;
 }
 
 .timer {
@@ -76,9 +108,11 @@ h2 {
     font-size: 3em;
     text-align: center;
     margin: 0 0 0.5em 0;
+    height: 2em;
 }
 
 .timer span {font-size: 0.7em;}
+
 
 @-moz-keyframes spin {
     0% {
@@ -87,7 +121,7 @@ h2 {
 
     100% {
         -moz-transform: rotate(360deg);
-    };
+    }
 }
 
 @-moz-keyframes spinoff {
@@ -97,7 +131,7 @@ h2 {
 
     100% {
         -moz-transform: rotate(-360deg);
-    };
+    }
 }
 
 @-webkit-keyframes spin {
@@ -107,7 +141,7 @@ h2 {
 
     100% {
         -webkit-transform: rotate(360deg);
-    };
+    }
 }
 
 @-webkit-keyframes spinoff {
@@ -117,5 +151,61 @@ h2 {
 
     100% {
         -webkit-transform: rotate(-360deg);
-    };
+    }
 }
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spinoff {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+/* nav */
+nav {
+    padding: 1em 3em;
+    height: 0px;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+     transition: all 0.5s ease-out;
+}
+
+#show:target nav {
+    height: 10em;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+#hide:target nav {height: 0px;}
+
+#show:target .settings-show,
+.settings-hide {display: none;}
+
+#show:target .settings-hide {display: block;}
+
+.settings {
+    text-align: left;
+    padding: 0 0 0 2em;
+}
+
+.settings a {
+    color: #111;
+}
+
+nav li {font-size: 1.4em;}
+
+nav label {margin: 0 0 0 1em;}
