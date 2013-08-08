@@ -200,14 +200,16 @@ nav {
 #show:target .settings-hide {display: block;}
 
 .settings {
-    text-align: left;
-    padding: 0 0 0 2em;
+    float: right;
+    padding: 1em;
 }
 
 .settings a {
     color: #111;
 }
 
-nav li {font-size: 1.4em;}
+nav li {
+    font-size: 1.4em;
+}
 
 nav label {margin: 0 0 0 1em;}
