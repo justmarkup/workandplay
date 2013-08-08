@@ -19,7 +19,7 @@
 		cycles = $('cycles'),
 		currentstatus = $('currentstatus'),
 		time = {
-			active: 1800,
+			active: 0,
 			work: 3000,
 			play: 900
 		},
@@ -48,7 +48,6 @@
 
 		timecount.innerHTML = active ? value.work.innerHTML : value.play.innerHTML;
 
-
 		$('settingNotification').checked = settings.notification;
 		$('settingSound').checked = settings.sound;
 
@@ -57,7 +56,7 @@
 		if (timecount.classList.contains('work_active')) {
 			currentstatus.innerHTML = 'Working...';
 		}
-		
+
 		if (time.active <= 0) {
 			if (timecount.classList.contains('work_active')) {
 				timecount.classList.remove('work_active');		
@@ -92,6 +91,7 @@
 
 		time.active = time.active-1;
 
+
 		count_min = Math.floor(time.active / 60);
 		count_sec = time.active - (count_min * 60);
 
@@ -103,10 +103,10 @@
 			document.title = count_sec + " sec || Work n' Play";
 		}
 
-		
 	}
 
-	button.play.addEventListener('click', function () {	
+	button.play.addEventListener('click', function () {
+		clearInterval(counter);
 		counter = setInterval(timer, 1000);
 		cycles.className = 'cycles_active';
 		if (notify.isSupported && (notify.PERMISSION_DEFAULT === notify.permissionLevel())) {

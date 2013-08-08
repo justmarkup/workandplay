@@ -18,8 +18,6 @@
     }
 }
 
-
-
 body {
     z-index: 10;
     max-width: 1200px;
@@ -48,6 +46,7 @@ audio {display: none;}
 .cycles_active .cycle {
     -moz-animation: spin 5s infinite linear;
     -webkit-animation: spin 5s infinite linear;
+    animation: spin 5s infinite linear;
 }
 
 .cycle_one {
@@ -89,9 +88,9 @@ h2 {
 }
 
 .cycles_active .cycle_one {
-    -moz-animation: spinoff 5s infinite linear;
-    -webkit-animation: spinoff 5s infinite linear;
-    animation: spinoff 5s infinite linear;
+    -moz-animation: spinoff 15s infinite linear;
+    -webkit-animation: spinoff 15s infinite linear;
+    animation: spinoff 15s infinite linear;
 }
 
 .timer {
@@ -104,10 +103,13 @@ h2 {
     text-align: center;
 }
 
+
+
 .current-status {
     font-size: 3em;
     text-align: center;
-    margin: 0 0 0.5em 0;
+    width: 100%;
+    margin: 0 auto;
     height: 2em;
 }
 
@@ -156,21 +158,21 @@ h2 {
 
 @keyframes spin {
     0% {
-        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
-        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
 @keyframes spinoff {
     0% {
-        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
-        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
 }
 
