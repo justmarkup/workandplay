@@ -20,8 +20,8 @@
 		currentstatus = $('currentstatus'),
 		time = {
 			active: 0,
-			work: 3000,
-			play: 900
+			work: localStorage.getItem("worktime") || 3000,
+			play: localStorage.getItem("playtime") ||900
 		},
 		active = (timecount.classList.contains('work_active')) || false,
 		notification = {
@@ -50,6 +50,8 @@
 
 		$('settingNotification').checked = settings.notification;
 		$('settingSound').checked = settings.sound;
+
+	console.log(time.work);
 
 	function timer() {
 
@@ -122,6 +124,7 @@
 	slider.work.addEventListener('change', function () {
 		value.work.innerHTML = this.value + ' min';
 		time.work = this.value * 60;
+		localStorage.setItem("worktime", time.work);
 		if (timecount.classList.contains('work_active')) {
 			time.active = this.value * 60;
 		}
@@ -130,6 +133,7 @@
 	slider.play.addEventListener('change', function () {
 		value.play.innerHTML = this.value + ' min';
 		time.play = this.value * 60;
+		localStorage.setItem("playtime", time.play);
 		if (timecount.classList.contains('play_active')) {
 			time.active = this.value * 60;
 		}

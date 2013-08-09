@@ -1,6 +1,6 @@
 {
     "version": "1",
-    "name": "Work and Play App",
+    "name": "Work n' Play",
     "launch_path": "index.html",
     "description": "Balance your work and play time",
     "icons": {
@@ -11,8 +11,8 @@
         "128": "images/logo128.png"
     },
     "developer": {
-        "name": "Michael Scharnagl",
-        "url": "http://bugspencer.com"
+        "name": "Michael Scharnagl (@justmarkup)",
+        "url": "http://worknplay.de"
     },
     "installs_allowed_from": ["*"],
     "default_locale": "en",
