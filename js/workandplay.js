@@ -25,7 +25,7 @@
 		},
 		active = (timecount.classList.contains('work_active')) || false,
 		notification = {
-			icon: 'worknplay.ico',
+			icon: 'info.png',
 			title: '',
 			body: '',
 			tag: 'worknplay'
@@ -50,8 +50,6 @@
 
 		$('settingNotification').checked = settings.notification;
 		$('settingSound').checked = settings.sound;
-
-	console.log(time.work);
 
 	function timer() {
 
