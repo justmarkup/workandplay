@@ -32,7 +32,7 @@ audio {display: none;}
 }
 
 .cycle {
-    background-color: rgba(0,0,0,0);
+    background-color: transparent;
     border: 5px solid rgba(0,149,221,0.3);
     opacity: .9;
     border-top: 5px solid rgba(0,0,0,0);
@@ -50,7 +50,7 @@ audio {display: none;}
 }
 
 .cycle_one {
-    background-color: rgba(0,0,0,0);
+    background-color: transparent;
     border: 5px solid rgba(0,149,221,0.9);
     opacity: .9;
     border-top: 5px solid rgba(0,0,0,0);
@@ -62,6 +62,18 @@ audio {display: none;}
     margin: 0 auto;
     position: relative;
     top: -20em;
+    overflow: hidden;
+}
+
+.cycle_one_inner {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 180px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,149,221,0.2);
 }
 
 input {

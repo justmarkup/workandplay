@@ -17,11 +17,14 @@
 		},
 		timecount = $('timer'),
 		cycles = $('cycles'),
+		cycle_height = parseInt(window.getComputedStyle(document.querySelector('.cycle_one'),null).getPropertyValue("height"), 10),
+		cycle_before = $('cycle_one_inner'),
 		currentstatus = $('currentstatus'),
 		time = {
+			current: 0,
 			active: 0,
 			work: localStorage.getItem("worktime") || 3000,
-			play: localStorage.getItem("playtime") ||900
+			play: localStorage.getItem("playtime") || 900
 		},
 		active = (timecount.classList.contains('work_active')) || false,
 		notification = {
@@ -40,6 +43,7 @@
 
 
 		time.active = active ? time.work : time.play;
+		time.current =  active ? Math.floor(time.work) : Math.floor(time.play);
 		slider.work.value = time.work / 60;
 		slider.play.value = time.play / 60;
 
@@ -57,12 +61,15 @@
 			currentstatus.innerHTML = 'Working...';
 		}
 
+		cycle_before.style.height = parseInt(window.getComputedStyle(document.querySelector('.cycle_one_inner'),null).getPropertyValue("height"), 10) - (180 / time.current) + "px";
+
 		if (time.active <= 0) {
 			if (timecount.classList.contains('work_active')) {
 				timecount.classList.remove('work_active');		
 				timecount.classList.add('play_active');
 				document.documentElement.classList.add('isplaying');
 				time.active = time.play;
+				time.current = time.play;
 				currentstatus.innerHTML = 'Playing...';
 				notification.title = 'Time to play';
 				notification.body = 'Stand up and relax';
@@ -71,6 +78,7 @@
 				timecount.classList.add('work_active');
 				document.documentElement.classList.remove('isplaying');
 				time.active = time.work;
+				time.current = time.work;
 				currentstatus.innerHTML = 'Working...';
 				notification.title = 'Back to work';
 				notification.body = 'Time to focus';
@@ -85,6 +93,7 @@
 			if (settings.sound) {
 				$('audio').play();
 			}
+			cycle_before.style.height = '180px';
 			clearInterval(counter);
 			counter = setInterval(timer, 1000);
 		}
@@ -125,6 +134,8 @@
 		localStorage.setItem("worktime", time.work);
 		if (timecount.classList.contains('work_active')) {
 			time.active = this.value * 60;
+			time.current = this.value * 60;
+			cycle_before.style.height = '180px';
 		}
 	});
 
@@ -134,6 +145,8 @@
 		localStorage.setItem("playtime", time.play);
 		if (timecount.classList.contains('play_active')) {
 			time.active = this.value * 60;
+			time.current = this.value * 60;
+			cycle_before.style.height = '180px';
 		}
 	});
 
