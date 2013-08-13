@@ -61,7 +61,7 @@
 			currentstatus.innerHTML = 'Working...';
 		}
 
-		cycle_before.style.height = parseInt(window.getComputedStyle(document.querySelector('.cycle_one_inner'),null).getPropertyValue("height"), 10) - (180 / time.current) + "px";
+		cycle_before.style.height = parseFloat(window.getComputedStyle(document.querySelector('.cycle_one_inner'),null).getPropertyValue("height")) - (180 / time.current) + "px";
 
 		if (time.active <= 0) {
 			if (timecount.classList.contains('work_active')) {
