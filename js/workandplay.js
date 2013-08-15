@@ -23,6 +23,7 @@
 		},
 		timecount = $('timer'),
 		cycles = $('cycles'),
+		audio = $('audio'),
 		cycle_height = parseInt(window.getComputedStyle(document.querySelector('.cycle_one'),null).getPropertyValue("height"), 10),
 		cycle_before = $('cycle_one_inner'),
 		currentstatus = $('currentstatus'),
@@ -63,6 +64,12 @@
 
 	function timer() {
 
+		if (audio.volume === 1) {
+			setTimeout(function () {
+				audio.volume = 0;
+			}, 4000);
+		}
+
 		if (timecount.classList.contains('work_active')) {
 			currentstatus.innerHTML = 'Working...';
 		}
@@ -70,6 +77,7 @@
 		cycle_before.style.height = parseFloat(window.getComputedStyle(document.querySelector('.cycle_one_inner'),null).getPropertyValue("height")) - (180 / time.current) + "px";
 
 		if (time.active <= 0) {
+
 			if (timecount.classList.contains('work_active')) {
 				timecount.classList.remove('work_active');		
 				timecount.classList.add('play_active');
@@ -97,7 +105,8 @@
 				});
 			}
 			if (settings.sound) {
-				$('audio').play();
+				audio.volume = 1;
+				audio.play();
 			}
 			cycle_before.style.height = '180px';
 			clearInterval(counter);
@@ -121,6 +130,10 @@
 	}
 
 	button.play.addEventListener('click', function () {
+		if (settings.sound) {
+			audio.play();
+			audio.volume = 0;
+		}
 		if (this.classList.contains('button-start')) {
 			this.className = 'button-pause';
 			this.innerHTML = 'Pause';
