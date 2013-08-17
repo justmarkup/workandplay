@@ -2,7 +2,7 @@
 	"use strict";
 
 	// TODO show message for old browser
-	if (!!'querySelector' in document && !!'localStorage' in window && !!'addEventListener' in window) {
+	if (!!'querySelector' in document && !!'localStorage' in window && !!'addEventListener' in window && !!'Audio' in window) {
 		return;
 		// TODO show message for old browser
 	}
@@ -23,14 +23,16 @@
 		},
 		timecount = $('timer'),
 		cycles = $('cycles'),
-		audio = $('audio'),
+		audio = new Audio(),
+		audio_ogg = !!audio.canPlayType && audio.canPlayType('audio/ogg; codecs="vorbis"') != "",
 		cycle_height = parseInt(window.getComputedStyle(document.querySelector('.cycle_one'),null).getPropertyValue("height"), 10),
 		cycle_before = $('cycle_one_inner'),
 		currentstatus = $('currentstatus'),
 		time = {
 			current: 0,
 			active: 0,
-			work: localStorage.getItem("worktime") || 3000,
+			work: 10,
+			//work: localStorage.getItem("worktime") || 3000,
 			play: localStorage.getItem("playtime") || 900
 		},
 		active = (timecount.classList.contains('work_active')) || false,
@@ -62,13 +64,13 @@
 		$('settingNotification').checked = settings.notification;
 		$('settingSound').checked = settings.sound;
 
-	function timer() {
-
-		if (audio.volume === 1) {
-			setTimeout(function () {
-				audio.volume = 0;
-			}, 4000);
+		if (audio_ogg) {
+			audio.setAttribute("src","sounds/waves.ogg");
+		} else {
+			audio.setAttribute("src","sounds/waves.mp3");
 		}
+
+	function timer() {
 
 		if (timecount.classList.contains('work_active')) {
 			currentstatus.innerHTML = 'Working...';
@@ -105,8 +107,10 @@
 				});
 			}
 			if (settings.sound) {
-				audio.volume = 1;
 				audio.play();
+				setTimeout(function () {
+					audio.pause();
+				}, 4000);
 			}
 			cycle_before.style.height = '180px';
 			clearInterval(counter);
@@ -130,10 +134,6 @@
 	}
 
 	button.play.addEventListener('click', function () {
-		if (settings.sound) {
-			audio.play();
-			audio.volume = 0;
-		}
 		if (this.classList.contains('button-start')) {
 			this.className = 'button-pause';
 			this.innerHTML = 'Pause';
