@@ -31,8 +31,7 @@
 		time = {
 			current: 0,
 			active: 0,
-			work: 10,
-			//work: localStorage.getItem("worktime") || 3000,
+			work: localStorage.getItem("worktime") || 3000,
 			play: localStorage.getItem("playtime") || 900
 		},
 		active = (timecount.classList.contains('work_active')) || false,
