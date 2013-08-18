@@ -181,6 +181,7 @@ function transform(slider) {
   slider.addEventListener('blur', onBlur, true);
 
   function onDragStart(e) {
+    e.preventDefault();
     isClick = true;
     setTimeout(function() { isClick = false; }, 0);
     if (e.button || !range)
