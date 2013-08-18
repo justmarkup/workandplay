@@ -1,10 +1,9 @@
 (function (doc) {
 	"use strict";
 
-	// TODO show message for old browser
 	if (!!'querySelector' in document && !!'localStorage' in window && !!'addEventListener' in window && !!'Audio' in window) {
+		alert('Please upgrade your browser to the latest version to use this site');
 		return;
-		// TODO show message for old browser
 	}
 
 	var $ = function (val) { return doc.getElementById(val);};

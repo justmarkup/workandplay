@@ -103,6 +103,7 @@ input {
 
 h2 {
     text-align: center;
+    font-weight: normal;
 }
 
 .cycles_active .cycle_one {
@@ -119,6 +120,7 @@ h2 {
     z-index: 10;
     width: 90%;
     text-align: center;
+    font-weight: normal;
 }
 
 
