@@ -1,7 +1,7 @@
 (function (doc) {
 	"use strict";
 
-	if (!!'querySelector' in document && !!'localStorage' in window && !!'addEventListener' in window && !!'Audio' in window) {
+	if (!!'querySelector' in document || !!'localStorage' in window || !!'addEventListener' in window) {
 		alert('Please upgrade your browser to the latest version to use this site');
 		return;
 	}
