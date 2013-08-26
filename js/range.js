@@ -118,6 +118,9 @@ function transform(slider) {
       visibility: 'visible',
       opacity: 1,
       position: 'fixed',
+      background: 'rgb(0, 149, 221)',
+      width: '1em',
+      height: '2em',
       top: '-999999px'
     });
     document.mozSetImageElement('__sliderthumb__', scale);

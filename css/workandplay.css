@@ -87,6 +87,7 @@ input {
     width: 100%;
     display: block;
     margin: 0 auto;
+    height: 30px;
 }
 
 @media all and (min-width: 40em) {

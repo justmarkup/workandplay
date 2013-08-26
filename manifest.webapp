@@ -1,13 +1,16 @@
 {
     "version": "1",
     "name": "Work n' Play",
-    "launch_path": "index.html",
+    "launch_path": "/index.html",
+    "appcache_path": "/manifest.appcache",
     "description": "Balance your work and play time",
     "icons": {
         "16": "/images/logo16.png",
         "32": "/images/logo32.png",
         "48": "/images/logo48.png",
-        "64": "/images/logo64.png"
+        "60": "/images/logo60.png",
+        "64": "/images/logo64.png",
+        "128": "/images/logo128.png"
     },
     "developer": {
         "name": "Michael Scharnagl (@justmarkup)",
